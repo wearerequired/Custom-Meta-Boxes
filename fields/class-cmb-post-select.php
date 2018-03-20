@@ -64,7 +64,9 @@ class CMB_Post_Select extends CMB_Select {
 
 		$data = array();
 		foreach ( $posts as $post_id ) {
-			$data[ $post_id ] = get_the_title( $post_id );
+			if ( $post_id ) {
+				$data[ $post_id ] = get_the_title( $post_id );
+			}
 		}
 
 		return $data;
