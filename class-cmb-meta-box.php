@@ -42,7 +42,7 @@ class CMB_Meta_Box {
 			$this->_meta_box['id'] = sanitize_title( $this->_meta_box['title'] );
 		}
 
-		add_action( 'dbx_post_advanced', array( &$this, 'init_fields_for_post' ) );
+		add_action( 'add_meta_boxes', array( &$this, 'init_fields_for_post' ) );
 		add_action( 'cmb_init_fields', array( &$this, 'init_fields' ) );
 
 		add_action( 'admin_menu', array( &$this, 'add' ) );
@@ -81,10 +81,11 @@ class CMB_Meta_Box {
 
 			$class  = _cmb_field_class_for_type( $field['type'] );
 			$single = ( ! isset( $field['repeatable'] ) || false === $field['repeatable'] );
-
+			error_log(print_r($post_id,true));
 			// If we are on a post edit screen - get metadata value of the field for this post.
 			if ( $post_id ) {
 				$values = (array) get_post_meta( $post_id, $field['id'], $single );
+				error_log(print_r($values,true));
 			}
 
 			/**
