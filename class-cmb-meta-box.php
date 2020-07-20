@@ -81,11 +81,10 @@ class CMB_Meta_Box {
 
 			$class  = _cmb_field_class_for_type( $field['type'] );
 			$single = ( ! isset( $field['repeatable'] ) || false === $field['repeatable'] );
-			error_log(print_r($post_id,true));
+
 			// If we are on a post edit screen - get metadata value of the field for this post.
 			if ( $post_id ) {
 				$values = (array) get_post_meta( $post_id, $field['id'], $single );
-				error_log(print_r($values,true));
 			}
 
 			/**
