@@ -57,7 +57,7 @@ class CMB_File_Field extends CMB_Field {
 
 		if ( $this->get_value() ) {
 			$src = wp_mime_type_icon( $this->get_value() );
-			if ( strpos( $src, site_url() !== false ) ) {
+			if ( strpos( $src, site_url() ) !== false ) {
 				$size = getimagesize( str_replace( site_url(), ABSPATH, $src ) );
 			} else {
 				$size = null;
